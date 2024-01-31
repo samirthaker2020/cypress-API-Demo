@@ -27,4 +27,18 @@ describe('api testing', ()=>{
                 expect(res.body.tourist_name).to.eq(req.tourist_name)
             })
     })
+    it('Apporach 3- using fixture',()=>{
+    
+        cy.fixture('tourist').then((myfixture)=>{
+         const req= myfixture
+        cy.request({
+            method:'POST',
+            url:'http://restapi.adequateshop.com/api/Tourist',
+            body: req}).then((res) =>{
+                expect(res.status).to.eq(201)
+                expect(res.body.tourist_name).to.eq(req.tourist_name)
+            })
+        })
+        
+    })
 })
