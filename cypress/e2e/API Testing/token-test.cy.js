@@ -36,4 +36,22 @@ describe('api testing', ()=>{
            
         })
     })
+
+    it('Get all orders',()=>{
+        cy.request({
+            method:'GET',
+            url:'https://simple-books-api.glitch.me/orders/',
+            headers:{
+                'Content-Type':'application/json',
+                'Authorization':authToken
+            },
+            cookies:{
+                'cookieName':'mycookie'
+            }
+            
+        }).then((res)=>{
+            expect(res.status).to.be.equal(200)
+           
+        })
+    })
 })
